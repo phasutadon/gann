@@ -1,0 +1,197 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+<center><table width="100%" height="50" border="1">
+  <tbody>
+    
+    <tr>
+      <td bgcolor="#E67011" style="text-align: center"><em><a href="Head 1.html">หน้าหลัก</a></em></td>
+      <td bgcolor="#E67011" style="text-align: center"><em><a href="pj page2.html">ประวัติสถานที่</a</em></td>
+      <td bgcolor="#E67011" style="text-align: center"><em><a href="pj page3.html">อาหารเเละของฝาก</a></em></td>
+      <td bgcolor="#E67011" style="text-align: center"><em><a href="pj page4.html">ติดต่อ เเสดงความคิดเห็น</a></em></td>
+	 
+    </tr>
+  </tbody>
+</table></center>
+
+<img src="Image/pong.png" width="100%" height="100%" alt=""/>
+<div class="table-wrap">
+<h1 class="style-h1">Email : phasutadol@gmail.com</h1>
+<h1 class="style-h1">Email: Makprommin@gmail.com</h1>
+	<title>แสดงความคิดเห็น</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        textarea {
+            width: 100%;
+            height: 100px;
+            padding: 10px;
+        }
+        input[type="text"], input[type="submit"] {
+            padding: 10px;
+            margin: 5px 0;
+        }
+        .btn {
+            padding: 5px 10px;
+            margin: 5px;
+            cursor: pointer;
+        }
+        .edit-btn {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .delete-btn {
+            background-color: #f44336;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>แสดงความคิดเห็น</h1>
+
+    <!-- ฟอร์มสำหรับการกรอกความคิดเห็น -->
+    <form id="commentForm">
+        <label for="name">ชื่อ:</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+        
+        <label for="comment">ความคิดเห็น:</label><br>
+        <textarea id="comment" name="comment" required></textarea><br><br>
+        
+        <input type="submit" value="ส่งความคิดเห็น">
+    </form>
+
+    <h2>ความคิดเห็นล่าสุด</h2>
+    <!-- ตารางสำหรับแสดงความคิดเห็น -->
+    <table id="commentTable">
+        <thead>
+            <tr>
+                <th>ชื่อ</th>
+                <th>ความคิดเห็น</th>
+                <th>เวลา</th>
+                <th>การกระทำ</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- ข้อมูลความคิดเห็นจะถูกเพิ่มที่นี่ -->
+        </tbody>
+    </table>
+
+    <script>
+        // กำหนดฟังก์ชั่นสำหรับการแสดงผลความคิดเห็น
+        document.getElementById('commentForm').addEventListener('submit', function(event) {
+            event.preventDefault();  // ป้องกันการรีเฟรชหน้าเว็บ
+
+            // รับค่าจากฟอร์ม
+            const name = document.getElementById('name').value;
+            const comment = document.getElementById('comment').value;
+
+            // สร้างแถวใหม่ในตาราง
+            const table = document.getElementById('commentTable').getElementsByTagName('tbody')[0];
+            const newRow = table.insertRow(0);  // แทรกความคิดเห็นใหม่ที่บรรทัดแรก
+            const date = new Date().toLocaleString();  // ใช้เวลาปัจจุบัน
+
+            // เพิ่มเซลล์ในแถวใหม่
+            const cell1 = newRow.insertCell(0);
+            const cell2 = newRow.insertCell(1);
+            const cell3 = newRow.insertCell(2);
+            const cell4 = newRow.insertCell(3);
+
+            cell1.textContent = name;  // ใส่ชื่อผู้แสดงความคิดเห็น
+            cell2.textContent = comment;  // ใส่ความคิดเห็น
+            cell3.textContent = date;  // ใส่เวลา
+
+            // สร้างปุ่มแก้ไขและลบ
+            const editBtn = document.createElement('button');
+            editBtn.textContent = 'แก้ไข';
+            editBtn.className = 'btn edit-btn';
+            editBtn.onclick = function() {
+                // การแก้ไข
+                document.getElementById('name').value = name;
+                document.getElementById('comment').value = comment;
+                // ลบแถวหลังจากแก้ไข
+                table.deleteRow(newRow.rowIndex);
+            };
+
+            const deleteBtn = document.createElement('button');
+            deleteBtn.textContent = 'ลบ';
+            deleteBtn.className = 'btn delete-btn';
+            deleteBtn.onclick = function() {
+                // การลบ
+                table.deleteRow(newRow.rowIndex);
+            };
+
+            cell4.appendChild(editBtn);  // เพิ่มปุ่มแก้ไขในคอลัมน์
+            cell4.appendChild(deleteBtn);  // เพิ่มปุ่มลบในคอลัมน์
+
+            // ล้างฟอร์มหลังจากส่งความคิดเห็น
+            document.getElementById('name').value = '';
+            document.getElementById('comment').value = '';
+        });
+    </script>
+<center>
+  <h1 class="style-h1">&nbsp;</h1></center>
+<center></center>
+	
+<p>&nbsp;</p><!-- SaiTiew.Auto -->
+<h2 style="text-align: center;">
+
+<div class="style-container"><div class="tiew-ads">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8651437743274361" crossorigin="anonymous"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-format="autorelaxed" data-ad-client="ca-pub-8651437743274361" data-ad-slot="2112025345"></ins>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div></div>
+<p class="clear-style"></p>
+
+<script src="/cookie.notice.min.js"></script>
+<script>
+new cookieNoticeJS({
+'messageLocales': {
+'en': 'เว็บไซต์สายเที่ยวมีการใช้งานคุกกี้ โดยมีวัตถุประสงค์เพื่อพัฒนาประสบการณ์ของผู้ใช้ให้ดียิ่งขึ้น'
+},'buttonLocales': {'en': 'ยอมรับและปิดการแจ้งเตือน'},'cookieNoticePosition': 'bottom','learnMoreLinkEnabled': false,'learnMoreLinkHref': '#',
+'learnMoreLinkText':{'en':'เรียนรู้เพิ่มเติม'},'expiresIn': 365,'buttonBgColor': '#087EBB',  'buttonTextColor': '#fff','noticeBgColor': '#000','noticeTextColor': '#fff','linkColor': '#eee','linkTarget': ''
+});
+</script>
+<style>
+#myBtn{padding: 5px 13px 5px 13px;display: none;position: fixed;bottom: 20px;right: 30px;z-index: 99;font-size: 20px;border: none;outline: none;background-color:#98CD18;color: white;cursor: pointer;border-radius: 3px;}
+#myBtn:hover {background-color: #555;}
+.arrow{border: solid white;border-width: 0 3px 3px 0;display: inline-block;padding: 3px;}
+.up{transform: rotate(-135deg);-webkit-transform: rotate(-135deg);}
+</style>
+<button onclick="topFunction()" id="myBtn"><i class="arrow up"></i></button>
+<script>
+let mybutton = document.getElementById("myBtn");window.onscroll = function() {scrollFunction()};
+function scrollFunction(){if(document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {mybutton.style.display = "block";}else {mybutton.style.display = "none";}}
+function topFunction(){document.body.scrollTop = 0;document.documentElement.scrollTop = 0;}
+</script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VTFZQJ9YS8"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-VTFZQJ9YS8');
+</script>
+<script src="https://www.w3counter.com/tracker.js?id=154604"></script>
+
+</body>
+</html>
